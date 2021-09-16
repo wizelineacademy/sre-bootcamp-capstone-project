@@ -1,6 +1,14 @@
-const Config = require('./config/default');
+const { APP } = require('./config/config')
+const sequelize = require('./database/db');
 const app = require('./server');
 
-app.listen(Config.port, function () {
-  console.log('listening at', Config.port);
-});
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('connected to db');
+    app.listen(APP.port, function () {
+      console.log('listening at', APP.port);
+    });
+  })
+  .catch(err => console.log(err))
+
