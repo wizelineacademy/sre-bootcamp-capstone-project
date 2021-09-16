@@ -1,5 +1,5 @@
-import chai from 'chai';
-import * as methods from '../../services/methods'
+const chai = require('chai');
+const methods = require('../../services/methods');
 
 const expect = chai.expect;
 
