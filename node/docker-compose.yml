@@ -1,17 +1,37 @@
 version: "3.8"
 
 services:
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+
   nodejs:
+    container_name: nodejs
     build:
       context: .
-    container_name: nodejs
+      args:
+        NODE_ENV: ${NODE_ENV:-development}
+        APP_PORT: ${APP_PORT:-8000}
     ports:
-      - "8000:8000"
-      - "9229:9229"
+      - "${APP_PORT:-8000}:8000"
+      - "${NODE_DEBUG_PORT:-9229}:9229"
     command: npm run dev
     volumes:
       - ./:/app
       - node_modules:/app/node_modules
+    depends_on: 
+      - mysql
 
 volumes:
   node_modules:
+  mysql_data:

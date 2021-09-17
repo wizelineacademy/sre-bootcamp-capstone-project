@@ -2,7 +2,8 @@ const { APP } = require('./config/config')
 const sequelize = require('./database/db');
 const app = require('./server');
 
-sequelize
+const startApp = () => {
+  sequelize
   .authenticate()
   .then(() => {
     console.log('connected to db');
@@ -10,5 +11,10 @@ sequelize
       console.log('listening at', APP.port);
     });
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    console.log("couldn't connect to db.. retrying in 10 seconds..")
+    setTimeout(startApp, 10000);
+  })
+}
 
+startApp()

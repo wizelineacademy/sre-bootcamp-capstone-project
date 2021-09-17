@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY package.json /app
 
-ARG NODE_ENV
+ARG NODE_ENV=${NODE_ENV:-development}
+
+ARG APP_PORT=${APP_PORT:-8000}
 
 RUN if [ "$NODE_ENV" = "development" ]; \
         then npm install; \
@@ -13,9 +15,7 @@ RUN if [ "$NODE_ENV" = "development" ]; \
 
 COPY . /app
 
-ENV PORT 8000
-
-EXPOSE $PORT
+EXPOSE $APP_PORT
 
 CMD ["node", "index.js"]
 
