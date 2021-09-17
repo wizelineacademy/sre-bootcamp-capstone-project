@@ -1,19 +1,12 @@
-exports.getCidrToMask = (req, res, next) => {
-  const value = req.query.value;
+const maskService = require('../services/maskService');
+
+exports.getMask = (req, res, next) => {
+  const cidr = req.params.cidr;
+  const output = maskService.cidrToMask(cidr)
   const response = {
     function: 'cidrToMask',
-    input: value,
-    output: value
-  };
-  return res.send(response);
-};
-
-exports.getMaskToCidr = (req, res, next) => {
-  const value = req.query.value;
-  const response = {
-    function: 'maskToCidr',
-    input: value,
-    output: value
+    input: cidr,
+    output
   };
   return res.send(response);
 };
