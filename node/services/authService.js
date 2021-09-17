@@ -33,6 +33,5 @@ const verifyPassword = (user, password) => {
   }
   const data = { role: user.role };
   const options = { noTimestamp: true };
-  const tokenJWT = jwt.sign(data, JWT.secret, options);
-  return tokenJWT;
+  return jwt.sign(data, JWT.secret, options);
 }

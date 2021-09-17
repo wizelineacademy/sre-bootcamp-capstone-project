@@ -1,7 +1,12 @@
+const maskService = require('../services/maskService');
+
 module.exports = (req, res, next) => {
-  const value = req.params.cidr ? req.params.cidr : false;
-  if (!value) {
-    return res.send(422, { cidr: 'cidr is required' })
+  const mask = req.params.mask ? req.params.mask : false;
+  if (!mask) {
+    return res.send(422, { mask: 'mask is required' })
+  }
+  if (!maskService.isValidMask(mask)) {
+    return res.send(422, { mask: 'provided value is not a valid subnet mask' })
   }
   next()
 }
