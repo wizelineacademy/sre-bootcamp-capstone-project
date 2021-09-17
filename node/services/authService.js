@@ -5,19 +5,12 @@ const User = require('../models/user');
 
 exports.login = async (username, password) => {
   const user = await User.findOne({ where: { username } });
-  if (!user) {
-    return false;
-  }
-  return verifyPassword(user, password);
+  return user ? verifyPassword(user, password) : false;
 }
 
 exports.verifyToken = (authorization) => {
   try {
-    const user = jwt.verify(authorization, JWT.secret);
-    if (user) {
-      return true;
-    }
-    return false;
+    return jwt.verify(authorization, JWT.secret);
   } catch (err) {
     return false;
   }
