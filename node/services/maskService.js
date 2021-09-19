@@ -1,12 +1,12 @@
 exports.isValidMask = mask => {
-  const validOctets = '(128|192|224|240|245|252|254|255)';
+  const validOctets = '(128|192|224|240|248|252|254|255)';
   const regex = new RegExp(
-    `^((0|${validOctets})\.0\.0\.0|` +
-    `255\.${validOctets}\.0\.0|` +
-    `255\.255\.${validOctets}\.0|` +
-    `255\.255\.255\.${validOctets})$`
+    `^(${validOctets}\\.0\\.0\\.0|` +
+    `255\\.${validOctets}\\.0\\.0|` +
+    `255\\.255\\.${validOctets}\\.0|` +
+    `255\\.255\\.255\\.${validOctets})$`
   );
-  return mask.match(regex);
+  return regex.test(mask);
 }
 
 exports.cidrToMask = (cidr) => {

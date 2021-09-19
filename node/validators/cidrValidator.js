@@ -6,7 +6,9 @@ module.exports = (req, res, next) => {
     return res.send(422, { cidr: 'cidr is required' });
   }
   if (!cidrService.isAValidCidr(cidr)) {
-    return res.send(422, { cidr: 'cidr must be a numeric value between 1 and 32' });
+    return res.send(422, {
+      cidr: 'cidr must be a numeric value between 1 and 32'
+    });
   }
   req.params.cidr = +req.params.cidr;
   next()

@@ -1,6 +1,6 @@
 const cidrService = require('../services/cidrService');
 
-exports.getCidr = (req, res, next) => {
+exports.getCidr = (req, res) => {
   const mask = req.params.mask;
   const response = {
     function: 'maskToCidr',

@@ -11,7 +11,7 @@ const startApp = () => {
       console.log('listening at', APP.port);
     });
   })
-  .catch(err => {
+  .catch(() => {
     console.log("couldn't connect to db.. retrying in 10 seconds..")
     setTimeout(startApp, 10000);
   })

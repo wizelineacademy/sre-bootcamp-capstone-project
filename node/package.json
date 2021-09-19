@@ -4,9 +4,12 @@
   "description": "API for SRE Bootcamp",
   "main": "server.js",
   "scripts": {
-    "test": "mocha test --recursive --require babel-core/register --require babel-polyfill",
     "start": "NODE_ENV=production index.js",
-    "dev": "nodemon --inspect index.js"
+    "dev": "nodemon --inspect index.js",
+    "lint": "eslint .",
+    "lint-fix": "npm run lint -- --fix",
+    "pretest": "npm run lint",
+    "test": "npm run pretest && nyc mocha ./test --recursive"
   },
   "repository": {
     "type": "git",
@@ -26,12 +29,31 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.0",
-    "sequelize": "^6.6.5",
-    "sinon": "^11.1.2"
+    "sequelize": "^6.6.5"
   },
   "devDependencies": {
     "chai": "^4.3.4",
+    "eslint": "^7.32.0",
+    "mocha": "^9.1.1",
     "nodemon": "^2.0.12",
+    "nyc": "^15.1.0",
+    "sinon": "^11.1.2",
     "supertest": "^3.0.0"
-  }
+  },
+  "eslintConfig": {
+    "extends": ["eslint:recommended"],
+    "env": {
+      "node" : true
+    },
+    "parserOptions": {
+      "ecmaVersion": 8
+    },
+    "rules" : {
+      "max-len": [2, 80, 4, {"ignoreUrls": true}],
+      "no-console": 0
+    }
+  },
+  "eslintIgnore": [
+    "node_modules"
+  ]
 }

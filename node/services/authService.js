@@ -3,12 +3,12 @@ const jwt = require('jsonwebtoken');
 const { JWT } = require('../config/config');
 const User = require('../models/user');
 
-exports.login = async (username, password) => {
+const login = async (username, password) => {
   const user = await User.findOne({ where: { username } });
   return user ? verifyPassword(user, password) : false;
 }
 
-exports.verifyToken = (authorization) => {
+const verifyToken = (authorization) => {
   try {
     return jwt.verify(authorization, JWT.secret);
   } catch (err) {
@@ -28,3 +28,6 @@ const verifyPassword = (user, password) => {
   const options = { noTimestamp: true };
   return jwt.sign(data, JWT.secret, options);
 }
+
+module.exports.login = login;
+module.exports.verifyToken = verifyToken;
