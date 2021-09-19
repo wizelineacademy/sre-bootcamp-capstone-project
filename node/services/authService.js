@@ -5,7 +5,13 @@ const User = require('../models/user');
 
 const login = async (username, password) => {
   const user = await User.findOne({ where: { username } });
-  return user ? verifyPassword(user, password) : false;
+  if (!user) {
+    return false;
+  }
+  if (!verifyPassword(user, password)) {
+    return false
+  }
+  return generateToken(user);
 }
 
 const verifyToken = (authorization) => {
@@ -21,9 +27,10 @@ const verifyPassword = (user, password) => {
     .createHash('sha512')
     .update(password + user.salt)
     .digest('hex');
-  if (hashedPassword !== user.password) {
-    return false;
-  }
+  return (hashedPassword === user.password);
+}
+
+const generateToken = user => {
   const data = { role: user.role };
   const options = { noTimestamp: true };
   return jwt.sign(data, JWT.secret, options);
