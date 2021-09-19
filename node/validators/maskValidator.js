@@ -8,5 +8,5 @@ module.exports = (req, res, next) => {
   if (!maskService.isValidMask(mask)) {
     return res.send(422, { mask: 'provided value is not a valid subnet mask' });
   }
-  next();
+  return next();
 }

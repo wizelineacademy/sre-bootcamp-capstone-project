@@ -11,5 +11,5 @@ module.exports = (req, res, next) => {
     });
   }
   req.params.cidr = +req.params.cidr;
-  next()
+  return next();
 }
