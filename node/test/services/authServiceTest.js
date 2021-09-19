@@ -1,10 +1,10 @@
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
-const sinon = require('sinon')
+const sinon = require('sinon');
 
 const User = require('../../models/user');
 const authService = require('../../services/authService');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 describe('authService.login', function () {
   it('should return false if user was not found', function (done) {
