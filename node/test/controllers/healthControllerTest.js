@@ -1,5 +1,5 @@
 const { describe, it } = require('mocha');
-const sinon = require('sinon')
+const sinon = require('sinon');
 
 const healthController = require('../../controllers/healthController');
 
