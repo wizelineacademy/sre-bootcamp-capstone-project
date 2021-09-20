@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
   if (!isAuthorized) {
     return unauthorized(res);
   }
-  next();
+  return next();
 }
 
 const getAuthorizationHeader = (req) => {
@@ -26,5 +26,5 @@ const isBearerTokenPresent = (authorization) => {
 }
 
 const unauthorized = (res) => {
-  return res.status(401).send({ message: 'UNAUTHORIZED' });
+  return res.send(401, { message: 'UNAUTHORIZED' });
 }

@@ -38,6 +38,8 @@ describe('authController.postLogin', function () {
           req.body.password
         );
         authServiceLoginStub.restore();
+        resMock.restore();
+        nextMock.restore();
         done();
       })
       .catch(done)
@@ -76,6 +78,8 @@ describe('authController.postLogin', function () {
             req.body.password
           );
           authServiceLoginStub.restore();
+          resMock.restore();
+          nextMock.restore();
           done();
         })
         .catch(done)

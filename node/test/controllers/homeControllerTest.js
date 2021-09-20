@@ -18,5 +18,7 @@ describe('homeController.getHome', function () {
     homeController.getHome(null, res, next.next)
     resMock.verify();
     nextMock.verify();
+    resMock.restore();
+    nextMock.restore();
   });
 });

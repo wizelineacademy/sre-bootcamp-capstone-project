@@ -18,5 +18,7 @@ describe('healthController.getHealth', function () {
     healthController.getHealth(null, res, next.next)
     resMock.verify();
     nextMock.verify();
+    resMock.restore();
+    nextMock.restore();
   });
 });
