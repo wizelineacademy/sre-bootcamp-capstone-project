@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package.json /app
 
-ARG NODE_ENV=${NODE_ENV:-development}
+ARG NODE_ENV=${NODE_ENV:-production}
 
 ARG APP_PORT=${APP_PORT:-8000}
 

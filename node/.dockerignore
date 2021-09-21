@@ -2,4 +2,5 @@
 Dockerfile
 node_modules
 .env
-.vs_code
+.vscode
+.nyc_output
