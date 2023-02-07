@@ -1,21 +1,28 @@
 # Setup
-### Install dependencies.
-```bash
+
+## Install dependencies
+
+``` bash
 npm install
 ```
-### Setup dotenv (environment vars).
-Copy the file .env.example to .env
-```bash
-cp .env.example
-```
-Remplace the values of the vars in the .env file.
 
-### Run proyect.
-```bash
+## Setup dotenv (environment variables)
+
+Copy the .env.example file to .env
+
+``` bash
+cp .env.example .env
+```
+Replace the values of the variables in the .env file
+
+## Run project
+
+``` bash
 npm start
 ```
 
-### Endpoints
+## Endpoints
+
 - [post] /login
 - [get] /_health
 - [get] /mask/${cidr}
