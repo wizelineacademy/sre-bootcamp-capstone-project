@@ -3,9 +3,9 @@ const mysql = require('mysql');
 const util = require('util');
 const crypto = require("crypto")
 
-const hostdb = 'bootcamp-tht.sre.wize.mx';
+const hostdb = 'sre-bootcamp-selection-challenge.cabf3yhjqvmq.us-east-1.rds.amazonaws.com';
 const userdb = 'secret';
-const passworddb = 'noPow3r';
+const passworddb = 'jOdznoyH6swQB9sTGdLUeeSrtejWkcw';
 const database = 'bootcamp_tht';
 const secret = 'my2w7wjd7yXF64FIADfJxNs1oupTGAuW'
 
