@@ -28,9 +28,9 @@ def urlLogin():
     # You can test with username = admin, password = secret  
     # This DB has already a best practice: a salt value to store the passwords
     con = mysql.connector.connect(
-        host='bootcamp-tht.sre.wize.mx',
+        host='sre-bootcamp-selection-challenge.cabf3yhjqvmq.us-east-1.rds.amazonaws.com',
         user='secret',
-        password='noPow3r',
+        password='jOdznoyH6swQB9sTGdLUeeSrtejWkcw',
         database='bootcamp_tht'  
     )
     cursor=con.cursor()
