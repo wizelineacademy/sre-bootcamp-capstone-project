@@ -18,7 +18,7 @@ class Token:
 class Restricted:
     def access_Data(self, authorization): 
         try:
-            var1=jwt.decode(authorization.replace('Bearer', '')[2:-1], 'my2w7wjd7yXF64FIADfJxNs1oupTGAuW', algorithms='HS256')
+            var1=jwt.decode(authorization.replace('Bearer', '')[1:], 'my2w7wjd7yXF64FIADfJxNs1oupTGAuW', algorithms='HS256')
         except Exception as e:
             return False
         if 'role' in var1:
