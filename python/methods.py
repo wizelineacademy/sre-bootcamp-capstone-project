@@ -3,7 +3,7 @@ import jwt
 class Token:
     def generateToken(self, username, input_password, Query):  
         usefulKey = 'my2w7wjd7yXF64FIADfJxNs1oupTGAuW'
-        if Query!=None:
+        if len(Query):
             salt=Query[0][0]
             password=Query[0][1]
             role=Query[0][2]  
